@@ -52,10 +52,10 @@ def GetWindowSize(window_fname):
     """
     with open(window_fname) as window_file:
         window = window_file.readline()
-        # In case there are empty lines.
-        while window is not None and window == '\n':
+        # In case there are empty lines
+        while window and window == '\n':
             window = window_file.readline()
-        if window is not None:
+        if window:
             try:
                 return int(window)
             except ValueError:
@@ -98,7 +98,7 @@ def ShouldReadNextLine(file, cur_time):
     :return: Boolean to denote whether next line is for cur_time.
     """
     line = PeekNextLine(file)
-    if line is not None and int(line[0]) == cur_time:
+    if line and int(line[0]) == cur_time:
         return True
     return False
 
